@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder,StandardScaler
 import numpy as np
 app = Flask(__name__)
-df = pd.read_csv("c:\\Users\\asd\\Downloads\\covid_toy.csv")
+df = pd.read_csv("covid_toy.csv")
 df=df.dropna()
 lb=LabelEncoder()
 df['gender']=lb.fit_transform(df['gender'])
