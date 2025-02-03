@@ -1,7 +1,7 @@
 from flask import Flask,jsonify
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import LabelEncoder,StandardScaler
 import numpy as np
 app = Flask(__name__)
@@ -18,11 +18,11 @@ x_train,x_test,y_train,y_test =train_test_split(x,y,test_size=0.2,random_state=4
 scaler = StandardScaler()
 x_train_scaled = scaler.fit_transform(x_train)
 x_test_scaled = scaler.transform(x_test)
-lr=LogisticRegression()
+lr=LinearRegression()
 lr.fit(x_train_scaled ,y_train)
 y_pred=lr.predict(x_test_scaled)
-from sklearn.metrics import accuracy_score
-score=accuracy_score(y_pred,y_test)*100
+from sklearn.metrics import r2_score
+score=r2_score(y_pred,y_test)*100
 
 from flask import Flask
 #@app.route('/')
